@@ -29,7 +29,7 @@ func main() {
 	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", port),
 		http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
 			for i := 0; i < responseSize; i++ {
-				n, err := w.Write(data)
+				_, err := w.Write(data)
 				if err != nil {
 					fmt.Printf("Failed to write. Error: %s\n", err.Error())
 					break
@@ -40,8 +40,6 @@ func main() {
 				} else {
 					fmt.Println("Damn, no flush")
 				}
-
-				fmt.Printf("Wrote %d bytes!\n", n)
 			}
 		})))
 }

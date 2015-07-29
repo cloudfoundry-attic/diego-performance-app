@@ -39,10 +39,9 @@ func downloadFile(location string) {
 	}
 	defer resp.Body.Close()
 
-	n, err := io.Copy(ioutil.Discard, resp.Body)
+	_, err = io.Copy(ioutil.Discard, resp.Body)
 	if err != nil {
 		fmt.Printf("Failed to read. Error: %s\n", err.Error())
 		return
 	}
-	fmt.Printf("Read %d bytes!\n", n)
 }
