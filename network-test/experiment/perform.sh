@@ -2,7 +2,7 @@
 
 function push_dora {
   dora_name=$1
-  pushd dora/
+  pushd ../../assets/dora/
     cf push $dora_name --no-start -b ruby_buildpack 
     cf curl /v2/apps/$(cf app $dora_name --guid) -X PUT -d '{"diego":true}'
     cf start $dora_name
