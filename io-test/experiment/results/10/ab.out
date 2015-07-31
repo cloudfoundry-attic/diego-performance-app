@@ -1,0 +1,43 @@
+This is ApacheBench, Version 2.3 <$Revision: 1604373 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking cpu-test-dora.diego-1.cf-app.com (be patient)
+
+
+Server Software:        
+Server Hostname:        cpu-test-dora.diego-1.cf-app.com
+Server Port:            80
+
+Document Path:          /
+Document Length:        84 bytes
+
+Concurrency Level:      100
+Time taken for tests:   14.915 seconds
+Complete requests:      10000
+Failed requests:        0
+Non-2xx responses:      10000
+Total transferred:      3140000 bytes
+HTML transferred:       840000 bytes
+Requests per second:    670.47 [#/sec] (mean)
+Time per request:       149.150 [ms] (mean)
+Time per request:       1.491 [ms] (mean, across all concurrent requests)
+Transfer rate:          205.59 [Kbytes/sec] received
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:       72   73  17.0     73    1272
+Processing:    73   75   5.6     75     310
+Waiting:       73   75   5.6     74     310
+Total:        144  148  17.9    147    1347
+
+Percentage of the requests served within a certain time (ms)
+  50%    147
+  66%    148
+  75%    149
+  80%    149
+  90%    150
+  95%    150
+  98%    152
+  99%    162
+ 100%   1347 (longest request)

@@ -1,0 +1,14 @@
+Found 57477 log entries
+Found 577 sessions
+[91mComplete Timelines: 31/577 (5.37%)
+[0m
+Average Bulk Sync Duration: 26.725648ms
+[91mComplete Timelines: 10/577 (1.73%)
+[0m
+Average Auction Fetching Duration: 3.168896ms
+[91mComplete Timelines: 10/577 (1.73%)
+[0m
+Average Auction Performing Duration: 3.182899ms
+[91mComplete Timelines: 30/577 (5.20%)
+[0m
+Average Fetching Container Metric Duration: 3.142084ms
