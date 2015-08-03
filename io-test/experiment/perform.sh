@@ -54,7 +54,7 @@ if [ -z $PASSWORD ]; then
   exit 1
 fi
   
-FILE_SIZE_MB=8
+FILE_SIZE_MB=16
 GOROUTINES=4 
 
 export CF_HOME=/tmp/diego-1
@@ -83,7 +83,7 @@ popd
 mkdir -p results/
 echo "IO_INSTANCES,TOTAL_THRASHED_MB,PUSH_1_TIME,PUSH_2_TIME,PUSH_3_TIME,PUSH_4_TIME,PUSH_5_TIME,AVG_BULK_SYNC_DURATION,AVG_AUCTION_FETCHING_DURATION,AVG_AUCTION_PERFORMING_DURATION,AVG_FETCHING_CONTAINER_METRICS_DURATION" > results/results.csv
 
-for i in 1 10 20 40 80 100; do
+for i in 1 10 30 60 100; do
   # Scale the Application to I instances
   cf scale io-app -i $i
   start_timestamp=`date +%s`
