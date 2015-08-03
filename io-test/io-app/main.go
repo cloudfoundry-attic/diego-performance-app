@@ -11,8 +11,14 @@ import (
 
 func main() {
 	nArg := os.Getenv("FILE_SIZE_MB")
+	pArg := os.Getenv("GOROUTINES")
 
 	n, err := strconv.Atoi(nArg)
+	if err != nil {
+		panic(err)
+	}
+
+	p, err := strconv.Atoi(pArg)
 	if err != nil {
 		panic(err)
 	}
@@ -20,7 +26,7 @@ func main() {
 	fmt.Println("Starting the test")
 	var wg sync.WaitGroup
 	for {
-		for i := 0; i < 30; i++ {
+		for i := 0; i < p; i++ {
 			wg.Add(1)
 			go func() {
 				writeReadDelete(n)
