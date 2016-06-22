@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"log"
+	"math/rand"
 	"net/http"
 	"os"
 	"strconv"
@@ -20,9 +21,13 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	secondsTilCrash, err := strconv.Atoi(os.Getenv("SECONDS_TIL_CRASH"))
+	minSecondsTilCrash, err := strconv.Atoi(os.Getenv("MIN_SECONDS_TIL_CRASH"))
 	if err != nil {
-		secondsTilCrash = 0
+		minSecondsTilCrash = 0
+	}
+	maxSecondsTilCrash, err := strconv.Atoi(os.Getenv("MAX_SECONDS_TIL_CRASH"))
+	if err != nil {
+		maxSecondsTilCrash = 0
 	}
 
 	vcapApplication := os.Getenv("VCAP_APPLICATION")
@@ -45,7 +50,8 @@ func main() {
 		logTicker.Stop()
 	}
 
-	if secondsTilCrash > 0 {
+	if minSecondsTilCrash > 0 && maxSecondsTilCrash>0 {
+		secondsTilCrash := rand.Intn(maxSecondsTilCrash-minSecondsTilCrash) + minSecondsTilCrash
 		crashTimer = time.NewTimer(time.Second * time.Duration(secondsTilCrash))
 	} else {
 		crashTimer = time.NewTimer(time.Hour)

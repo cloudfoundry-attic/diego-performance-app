@@ -32,4 +32,5 @@ applications:
     ENDPOINT_TO_HIT: http://{{ .crashingName }}.{{ .domain }}
     LOGS_PER_SECOND: 0
     REQUEST_PER_SECOND: 0
-    SECONDS_TIL_CRASH: 30
+    MIN_SECONDS_TIL_CRASH: 30
+    MAX_SECONDS_TIL_CRASH: 360
