@@ -1,0 +1,35 @@
+---
+applications:
+- name: {{ .lightName }}
+  instances: 13
+  memory: 100M
+  disk_quota: 100M
+  env:
+    ENDPOINT_TO_HIT: http://{{ .lightName }}.{{ .domain }}
+    LOGS_PER_SECOND: 1
+    REQUEST_PER_SECOND: 1
+- name: {{ .mediumName }}
+  instances: 7
+  memory: 100M
+  disk_quota: 100M
+  env:
+    ENDPOINT_TO_HIT: http://{{ .mediumName }}.{{ .domain }}
+    LOGS_PER_SECOND: 5
+    REQUEST_PER_SECOND: 2
+- name: {{ .heavyName }}
+  instances: 3
+  memory: 100M
+  disk_quota: 100M
+  env:
+    ENDPOINT_TO_HIT: http://{{ .heavyName }}.{{ .domain }}
+    LOGS_PER_SECOND: 10
+    REQUEST_PER_SECOND: 3
+- name: {{ .crashingName }}
+  instances: 2
+  memory: 100M
+  disk_quota: 100M
+  env:
+    ENDPOINT_TO_HIT: http://{{ .crashingName }}.{{ .domain }}
+    LOGS_PER_SECOND: 0
+    REQUEST_PER_SECOND: 0
+    SECONDS_TIL_CRASH: 30
