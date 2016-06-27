@@ -66,12 +66,35 @@ func generateManifest(templatePath string, index int) error {
 	if err != nil {
 		return err
 	}
-	err = t.Execute(f, map[string]string{
-		"domain":       config.AppsDomain,
-		"lightName":    fmt.Sprintf("light-%05d", index),
-		"mediumName":   fmt.Sprintf("medium-%05d", index),
-		"heavyName":    fmt.Sprintf("heavy-%05d", index),
-		"crashingName": fmt.Sprintf("crashing-%05d", index),
+
+	lightNames := []string{}
+	for i := 1; i <= 9; i++ {
+		lightNames = append(lightNames, fmt.Sprintf("light%d-%05d", i, index))
+	}
+
+	mediumNames := []string{}
+	for i := 1; i <= 7; i++ {
+		mediumNames = append(mediumNames, fmt.Sprintf("medium%d-%05d", i, index))
+	}
+
+	heavyNames := []string{}
+	for i := 1; i <= 1; i++ {
+		heavyNames = append(heavyNames, fmt.Sprintf("heavy%d-%05d", i, index))
+	}
+
+	crashingNames := []string{}
+	for i := 1; i <= 2; i++ {
+		crashingNames = append(crashingNames, fmt.Sprintf("crashing%d-%05d", i, index))
+	}
+
+	err = t.Execute(f, map[string]interface{}{
+		"domain":          config.AppsDomain,
+		"lightGroupName":  fmt.Sprintf("light-group-%05d", index),
+		"mediumGroupName": fmt.Sprintf("medium-group-%05d", index),
+		"lightNames":      lightNames,
+		"mediumNames":     mediumNames,
+		"heavyNames":      heavyNames,
+		"crashingNames":   crashingNames,
 	})
 	if err != nil {
 		return err
